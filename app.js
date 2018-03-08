@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.post('/webhook', function(req, res) {
     let users = req.body.users;
-    console.log(users);
+    console.log(req.body);
     users = JSON.parse(users);
     users.forEach(user => {
         io.sockets.in(user).emit('message', 'A message to ' + user);
@@ -22,7 +22,6 @@ io.on('connection', function(socket) {
         console.log('joined room: ' + room);
     })
     console.log('a user connected');
-    // io.emit('hej', 'hallå!');
 });
 
 http.listen(3001, function() {
