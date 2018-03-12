@@ -6,6 +6,10 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.get('/', function(req, res) {
+    res.send('test :)')
+})
+
 app.post('/webhook', function(req, res) {
     let users = req.body.users;
     console.log(req.body);
