@@ -11,7 +11,7 @@ app.post('/webhook', function(req, res) {
     console.log(req.body);
     users = JSON.parse(users);
     users.forEach(user => {
-        io.sockets.in(user).emit('message', 'A message to ' + user);
+        io.sockets.in(user).emit('webhook', 'A message to ' + user);
     })
     console.log('webhook!');
 });
